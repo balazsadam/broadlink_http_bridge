@@ -29,12 +29,6 @@ def br_learn():
     ir = BROADLINK.check_data()
   return base64.b64encode(ir)
 
-def frontpage():
-  f = open('frontpage.html')
-  s = f.read()
-  f.close()
-  return s
-
 class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
   def do_HEAD(s):
     s.send_response(200)
@@ -67,8 +61,6 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     return
 
 if __name__ == '__main__':
-  
-  
   with open("config.yaml", 'r') as stream:
     try:
       y = yaml.load(stream)
@@ -88,7 +80,3 @@ if __name__ == '__main__':
     pass
     httpd.server_close()
   print time.asctime(), "Server Stops - %s:%s" % (y["server"]["host"], y["server"]["port"])
-
-  
-
-
